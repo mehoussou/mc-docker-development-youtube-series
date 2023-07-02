@@ -12,13 +12,14 @@ data:
   # to disable admin login: admin.enabled: "false"
   accounts.mehoussou: apiKey, login
   accounts.marcel: login
+  # admin.enabled: "false"
 
-  kustomize.buildOptions: --enable-alpha-plugins
-  ui.bannercontent: MARCEL--PROJECT
-  ui.bannerpermanent: "true"
-  ui.bannerposition: top
-  url: https://argocd.marcel.us/
-  users.anonymous.enabled: "false"
+  # kustomize.buildOptions: --enable-alpha-plugins
+  # ui.bannercontent: MARCEL--PROJECT
+  # ui.bannerpermanent: "true"
+  # ui.bannerposition: top
+  # url: https://argocd.marcel.us/
+  # users.anonymous.enabled: "false"
 kind: ConfigMap
 metadata:
   annotations:
@@ -62,5 +63,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-rbac-cm
   namespace: argocd
-  resourceVersion: "5596"
+  #resourceVersion: "5596"
+  # resourceVersion: "5591"
   uid: 8484210d-cda5-4ff9-8fe6-66c2b063c4ed
