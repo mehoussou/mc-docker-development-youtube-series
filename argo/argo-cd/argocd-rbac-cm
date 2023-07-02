@@ -1,0 +1,18 @@
+{
+    "apiVersion": "v1",
+    "kind": "ConfigMap",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"argocd-rbac-cm\",\"app.kubernetes.io/part-of\":\"argocd\"},\"name\":\"argocd-rbac-cm\",\"namespace\":\"argocd\"}}\n"
+        },
+        "creationTimestamp": "2023-06-30T23:28:10Z",
+        "labels": {
+            "app.kubernetes.io/name": "argocd-rbac-cm",
+            "app.kubernetes.io/part-of": "argocd"
+        },
+        "name": "argocd-rbac-cm",
+        "namespace": "argocd",
+        "resourceVersion": "5596",
+        "uid": "8484210d-cda5-4ff9-8fe6-66c2b063c4ed"
+    }
+}

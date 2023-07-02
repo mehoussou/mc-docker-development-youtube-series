@@ -1,0 +1,66 @@
+
+# Edit argocd-cm file to add new user:
+apiVersion: v1
+data:
+  #add an additional local user with apikey and login capabilities
+  # apikey - allows generating API Keys
+  # login - allows to login using UI
+  # account format: accounts.user1: apiKey, login
+
+  # Disable user. Useris enabled by default
+  # accounts.mehoussou.enabled: "false"
+  # to disable admin login: admin.enabled: "false"
+  accounts.mehoussou: apiKey, login
+  accounts.marcel: login
+
+  kustomize.buildOptions: --enable-alpha-plugins
+  ui.bannercontent: MARCEL--PROJECT
+  ui.bannerpermanent: "true"
+  ui.bannerposition: top
+  url: https://argocd.marcel.us/
+  users.anonymous.enabled: "false"
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"argocd-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-cm","namespace":"argocd"}}
+  creationTimestamp: "2023-06-30T23:28:10Z"
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cm
+  namespace: argocd
+  resourceVersion: "5591"
+  uid: f2d9b198-f575-4845-9245-3820640e0ecf
+
+
+# Edit argocd-rbac-cm file to add users rbac roles:
+apiVersion: v1
+data:
+  policy.csv: |
+    p, role:org-admin, applications, *, */*, allow
+    p, role:org-admin, clusters, get, *, allow
+    p, role:org-admin, repositories, get, *, allow
+    p, role:org-admin, repositories, create, *, allow
+    p, role:org-admin, repositories, update, *, allow
+    p, role:org-admin, repositories, delete, *, allow
+    g, mehoussou, role:admin
+    g, marcel, role:org-admin
+  users.conf: |
+    admin: <admin-password>,<admin-role>
+    mehoussou: <admin0111>,<admin>
+    marcel: <admin0110>,<org-admin>
+
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"argocd-rbac-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-rbac-cm","namespace":"argocd"}}
+  creationTimestamp: "2023-06-30T23:28:10Z"
+  labels:
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-rbac-cm
+  namespace: argocd
+  resourceVersion: "5596"
+  uid: 8484210d-cda5-4ff9-8fe6-66c2b063c4ed
