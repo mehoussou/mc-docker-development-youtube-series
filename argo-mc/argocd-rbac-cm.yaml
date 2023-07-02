@@ -1,0 +1,24 @@
+apiVersion: v1
+data:
+  policy.csv: |
+    p, role:org-admin, applications, *, */*, allow
+    p, role:org-admin, clusters, get, *, allow
+    p, role:org-admin, repositories, get, *, allow
+    p, role:org-admin, repositories, create, *, allow
+    p, role:org-admin, repositories, update, *, allow
+    p, role:org-admin, repositories, delete, *, allow
+    g, mehoussou, role:admin
+    g, marcel, role:org-admin
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"policy.csv":"p, role:org-admin, applications, *, */*, allow\np, role:org-admin, clusters, get, *, allow\np, role:org-admin, repositories, get, *, allow\np, role:org-admin, repositories, create, *, allow\np, role:org-admin, repositories, update, *, allow\np, role:org-admin, repositories, delete, *, allow\ng, mehoussou, role:admin\ng, marcel, role:org-admin\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2023-06-30T23:28:10Z","labels":{"app.kubernetes.io/name":"argocd-rbac-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-rbac-cm","namespace":"argocd","resourceVersion":"48355","uid":"8484210d-cda5-4ff9-8fe6-66c2b063c4ed"}}
+  creationTimestamp: "2023-06-30T23:28:10Z"
+  labels:
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-rbac-cm
+  namespace: argocd
+  resourceVersion: "48917"
+  uid: 8484210d-cda5-4ff9-8fe6-66c2b063c4ed
