@@ -10,7 +10,7 @@ data:
   # Disable user. Useris enabled by default
   # accounts.mehoussou.enabled: "false"
   # to disable admin login: admin.enabled: "false"
-  accounts.mehoussou: apiKey, login
+  accounts.mehoussou: apiKey,login
   accounts.marcel: login
   # admin.enabled: "false"
 
